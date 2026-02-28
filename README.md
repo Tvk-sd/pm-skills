@@ -39,6 +39,12 @@ git clone https://github.com/Tvk-sd/pm-skills ~/.claude/skills/user
 | [`ost-evidence`](ost-evidence/SKILL.md) | OST from real discovery data. Teresa Torres framework. Every branch traces to evidence. | "OST from my research" · "opportunity tree from data" |
 | [`ost-exploration`](ost-exploration/SKILL.md) | OST without data. Assumption mode + generative extensions. Occam's razor. `[SPECULATIVE]` labeled. | "explore opportunity space" · "OST without data" · "generative OST" |
 
+### Brand & Design
+
+| Skill | What it does | Trigger phrases |
+|---|---|---|
+| [`art-direction`](art-direction/SKILL.md) | Define visual identity, brief designers/agencies, art direct campaigns, critique visual work | "art direction" · "visual identity" · "brand design" · "moodboard" · "creative brief" |
+
 ### Ideation & Before Building
 
 | Skill | What it does | Trigger phrases |
