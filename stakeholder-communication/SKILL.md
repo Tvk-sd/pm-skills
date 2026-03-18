@@ -1,7 +1,10 @@
 ---
+version: 1.0.0
 name: stakeholder-communication
 description: Draft audience-adapted stakeholder updates, status reports, or exec communications. Use when the user needs to write an update, status email, board communication, or cross-functional message. Trigger phrases include: "write a stakeholder update", "draft a status update", "exec communication", "write an update for leadership", "communicate this to the team".
 ---
+
+**Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
 
 This skill produces crisp, audience-adapted communications that lead with the most important thing and don't bury bad news.
 
@@ -44,3 +47,21 @@ If multiple audiences are specified, create separate versions tailored to each g
 - No PM jargon for non-PM audiences (no "velocity", "sprint", "backlog" for execs)
 - Every risk mentioned must include a mitigation plan or explicit ask for help
 - Do not soften language on blockers — executives respect directness over optimism
+
+---
+
+## File output
+
+After producing the final output, save it as a markdown file in the current working directory:
+
+```
+Filename: [project-slug]-STAKEHOLDER-UPDATE.md
+```
+
+If no project slug is evident from context, ask the user for one before saving. Confirm the save with: `Saved: [filename]`
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.

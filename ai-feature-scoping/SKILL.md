@@ -1,7 +1,10 @@
 ---
+version: 1.0.0
 name: ai-feature-scoping
-description: Rigorously scope an AI product feature covering value proposition, accuracy thresholds, failure modes, build/buy options, and measurement. Use when the user wants to scope or de-risk an AI feature. Trigger phrases include: "scope this AI feature", "AI feature feasibility", "evaluate this AI idea", "plan an AI feature", "is this AI worth building".
+description: Rigorously scope an AI product feature covering value proposition, accuracy thresholds, failure modes, build/buy options, and measurement. Use when the user wants to scope or de-risk a known AI feature. Trigger phrases include: "scope this AI feature", "AI feature feasibility", "plan an AI feature".
 ---
+
+**Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
 
 This skill scopes AI features rigorously, covering dimensions traditional feature scoping misses: accuracy thresholds, failure modes, false positive/negative trade-offs, and ongoing operational costs.
 
@@ -51,3 +54,9 @@ For each tier: capabilities in/out, data requirements, expected accuracy range, 
 - Do not assume unlimited data availability or quality
 - Account for ongoing operational costs — not just build cost
 - Consider regulatory and privacy implications explicitly
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.

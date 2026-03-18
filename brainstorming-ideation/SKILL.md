@@ -1,7 +1,10 @@
 ---
+version: 1.0.0
 name: brainstorming-ideation
 description: Run a structured diverge-then-converge ideation session that generates genuinely novel solutions, not obvious lists. Use when the user needs to brainstorm product ideas, explore a problem space, or generate creative solutions. Trigger phrases include: "brainstorm ideas", "help me ideate", "what solutions could we try", "generate ideas for", "creative problem solving".
 ---
+
+**Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
 
 This skill uses a diverge-then-converge structure with forced perspective shifts and a challenge round to produce genuinely novel ideas rather than obvious lists.
 
@@ -63,3 +66,21 @@ Present the top 3 recommendations:
 - Do not include ideas already listed as "considered" unless you have a genuinely different angle
 - Every "transformative" idea must have a plausible path from here to there — no innovation theatre
 - If the problem statement itself is flawed, say so before brainstorming solutions to the wrong problem
+
+---
+
+## File output
+
+After producing the final output, save it as a markdown file in the current working directory:
+
+```
+Filename: [project-slug]-IDEATION.md
+```
+
+If no project slug is evident from context, ask the user for one before saving. Confirm the save with: `Saved: [filename]`
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.

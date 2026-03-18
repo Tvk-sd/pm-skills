@@ -1,7 +1,10 @@
 ---
+version: 1.0.0
 name: jtbd-analysis
 description: Analyse customer data using the Jobs to be Done framework — identifying functional, emotional, and social jobs, desired outcomes, four forces, and overserved/underserved opportunities. Use when the user has customer data and needs to understand what customers are actually trying to accomplish. Trigger phrases include: "JTBD analysis", "jobs to be done", "what job are customers hiring us for", "understand customer motivations", "analyse customer jobs".
 ---
+
+**Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
 
 This skill runs a rigorous JTBD analysis from real customer data. It separates what customers say they want from what they are actually trying to accomplish, and grounds every insight in direct evidence.
 
@@ -58,3 +61,21 @@ Recommend where to focus product investment based on underserved and unserved ou
 - Every job and outcome must trace back to specific evidence; mark inferences without direct support as `[INFERRED]`
 - Do not conflate solutions with jobs: "I want a better dashboard" is a solution; the job is "quickly assess business health without manual data gathering"
 - If data is insufficient for confident JTBD analysis, say what additional research is needed rather than fabricating insights
+
+---
+
+## File output
+
+After producing the final output, save it as a markdown file in the current working directory:
+
+```
+Filename: [project-slug]-JTBD.md
+```
+
+If no project slug is evident from context, ask the user for one before saving. Confirm the save with: `Saved: [filename]`
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.

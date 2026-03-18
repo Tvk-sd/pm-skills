@@ -1,7 +1,10 @@
 ---
+version: 1.0.0
 name: workflow-documentation
 description: Create comprehensive, living process documentation that people will actually follow — including exception handling, handoff protocols, and review triggers. Use when the user needs to document a workflow, process, or operational procedure. Trigger phrases include: "document this process", "write a workflow", "process documentation", "how should we document this", "create a runbook".
 ---
+
+**Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
 
 This skill produces process documentation that captures real-world complexity — not idealised versions. It surfaces implicit knowledge, flags optimisation opportunities, and includes exception handling.
 
@@ -70,3 +73,21 @@ For each role transition:
 - Flag inefficiencies and unnecessary steps with `[OPTIMISATION OPPORTUNITY]`
 - Every step must have a clear owner — if ownership is ambiguous, flag it as a problem
 - Write for someone new to this process — no assumed knowledge or undefined tribal terminology
+
+---
+
+## File output
+
+After producing the final output, save it as a markdown file in the current working directory:
+
+```
+Filename: [project-slug]-WORKFLOW.md
+```
+
+If no project slug is evident from context, ask the user for one before saving. Confirm the save with: `Saved: [filename]`
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.

@@ -1,7 +1,10 @@
 ---
+version: 1.0.0
 name: user-research-synthesis
 description: Synthesise user research data (interviews, surveys, feedback logs) into prioritised, evidence-grounded product insights. Use when the user has raw research data and needs themes, patterns, contradictions, and product implications. Trigger phrases include: "synthesise my research", "analyse these interviews", "what does this research tell us", "find patterns in this feedback", "research synthesis".
 ---
+
+**Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
 
 This skill produces genuine synthesis from raw research data — not summaries. It grounds every insight in direct quotes, surfaces contradictions, and produces prioritised product implications.
 
@@ -44,3 +47,19 @@ For each Critical and Important insight, suggest a specific product response —
 - Distinguish between what participants SAID they want and what their behaviour suggests they actually need
 - Flag any interviewer bias detectable in the questions asked
 - Mark any inference without direct support as `[INFERRED]`
+
+---
+
+## File output
+
+Save the completed synthesis as `[project-slug]-RESEARCH.md` in the current working directory.
+
+Confirm save with: `Saved: [filename]`
+
+Display the full document inline after saving.
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.

@@ -1,7 +1,10 @@
 ---
+version: 1.0.0
 name: ost-exploration
 description: Build an Opportunity Solution Tree in assumption and generative extension mode — for when discovery data is thin, missing, or when you want to expand the solution space before converging. Uses Occam's razor for hypothesis selection and explicit [SPECULATIVE] labeling for generative extensions and analog imports. Different from ost-evidence: this mode explores and generates rather than synthesises existing data. Trigger phrases include: "explore opportunity space", "OST without data", "assumption-based OST", "generative OST", "what opportunities might exist", "build an OST from scratch", "discovery is early".
 ---
+
+**Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
 
 This skill builds an Opportunity Solution Tree when discovery data is thin or absent, or when you want to push beyond what evidence alone suggests. It runs two modes in parallel:
 
@@ -107,18 +110,34 @@ For generative assumptions: include a **signal to watch for** — a weak signal 
 
 ## Output format
 
+Always output the OST as a Mermaid flowchart (top-down). Use this structure:
+
+```mermaid
+flowchart TD
+    OUT["Desired Outcome\nmetric / baseline to target / date"]
+
+    OPP1["EVIDENCED\nOpportunity name\nConfidence: High"]
+    OPP2["ASSUMPTION PRIMARY\nOpportunity name\nEvidence: Weak"]
+    OPP3["GENERATIVE EXTENSION\nOpportunity name\nSPECULATIVE"]
+    GAP["GAP\nMissing research needed"]
+
+    SOL1A["Quick win: Solution"]
+    SOL1B["Strategic: Solution"]
+    SOL2A["Quick win: Solution"]
+    SOL3A["Innovative bet: Solution"]
+
+    OUT --> OPP1
+    OUT --> OPP2
+    OUT --> OPP3
+    OUT --> GAP
+
+    OPP1 --> SOL1A
+    OPP1 --> SOL1B
+    OPP2 --> SOL2A
+    OPP3 --> SOL3A
 ```
-Outcome [metric / baseline → target / date]
-└── Theme
-    ├── EVIDENCED: Opportunity [Confidence]
-    │   └── Solution → Assumptions → Test
-    └── ASSUMPTION: Opportunity [Evidence strength / Risk]
-        ├── PRIMARY (Occam)
-        ├── GENERATIVE EXTENSION [SPECULATIVE]
-        │   ├── Minimum believable version
-        │   └── Analog import (if applicable)
-        └── Solution → Assumption map → Tests
-```
+
+Use `flowchart TD` only — not mindmap. FigJam and Notion both render this format and it exports cleanly to SVG. Keep node labels short. Full analysis goes in prose below the diagram.
 
 ---
 
@@ -131,3 +150,9 @@ Outcome [metric / baseline → target / date]
 - Every test must be completable in under 2 weeks with minimal engineering
 - Occam's razor applies to assumption selection, not to generative extensions
 - If no discovery data is provided, proceed in assumption-only mode and note which sections require future research
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.
