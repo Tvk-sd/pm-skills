@@ -1,6 +1,6 @@
 # PM Skills Library
 
-13 custom Claude Code skills for Product Managers, AI Builders, and UX Specialists.
+25 custom Claude Code skills for Product Managers, AI Builders, and UX Specialists.
 
 Skills auto-trigger in Claude Code when your prompt matches the trigger phrases below. Install once — they're always available.
 
@@ -22,46 +22,74 @@ git clone https://github.com/Tvk-sd/pm-skills ~/.claude/skills/user
 
 ## Skill Index
 
-### Discovery & Strategy
+Organised by Design Thinking stages: Empathize → Define → Ideate → Design → Build → Ship → Operate.
 
-| Skill | What it does | Trigger phrases |
+### Empathize
+*Understand users, context, and the problem space before forming an opinion.*
+
+| Task | Skill | Trigger phrases |
 |---|---|---|
-| [`pm-thinking-partner`](pm-thinking-partner/SKILL.md) | Senior PM mode — task routing, framework selection, strategic reasoning | "think through this with me" · "PM review" · "help me frame this" |
-| [`concept-brief`](concept-brief/SKILL.md) | Voice-forward direction brief — what it is, what it believes, who it's for. Saves CONCEPT.md locally. | "concept brief" · "vision brief" · "direction brief" · "write up the vision" |
-| [`prd-writing`](prd-writing/SKILL.md) | Two-phase PRD: challenge assumptions first, then structured draft | "write a PRD" · "feature spec" · "product requirements" |
-| [`competitor-analysis`](competitor-analysis/SKILL.md) | Steelman-first competitive analysis — argues for competition before self-assessment | "competitor analysis" · "competitive landscape" |
+| Synthesise interviews / surveys | [`user-research-synthesis`](user-research-synthesis/SKILL.md) | "synthesise my research" · "analyse these interviews" |
+| Jobs to be Done analysis | [`jtbd-analysis`](jtbd-analysis/SKILL.md) | "JTBD" · "jobs to be done" · "what job are we hired for" |
+| Opportunity tree from real data | [`ost-evidence`](ost-evidence/SKILL.md) | "OST from my research" · "opportunity tree from data" |
+| Explore opportunity space without data | [`ost-exploration`](ost-exploration/SKILL.md) | "explore opportunity space" · "OST without data" · "generative OST" |
+| AI market / competitive research | [`ai-market-research`](ai-market-research/SKILL.md) | "research X market" · "market research plan" · "what do people think about" · "research this space" |
 
-### Research & Discovery
+### Define
+*Frame the problem, set strategy, align on scope and success.*
 
-| Skill | What it does | Trigger phrases |
+| Task | Skill | Trigger phrases |
 |---|---|---|
-| [`user-research-synthesis`](user-research-synthesis/SKILL.md) | Quote extraction → patterns → contradiction mapping → insight hierarchy | "synthesise my research" · "analyse these interviews" |
-| [`jtbd-analysis`](jtbd-analysis/SKILL.md) | Jobs, desired outcomes, four forces, overserved/underserved outcomes | "JTBD" · "jobs to be done" · "what job are we hired for" |
-| [`ost-evidence`](ost-evidence/SKILL.md) | OST from real discovery data. Teresa Torres framework. Every branch traces to evidence. | "OST from my research" · "opportunity tree from data" |
-| [`ost-exploration`](ost-exploration/SKILL.md) | OST without data. Assumption mode + generative extensions. Occam's razor. `[SPECULATIVE]` labeled. | "explore opportunity space" · "OST without data" · "generative OST" |
+| Strategic PM reasoning | [`pm-thinking-partner`](pm-thinking-partner/SKILL.md) | "think through this with me" · "PM review" · "help me frame this" |
+| Direction / vision brief | [`concept-brief`](concept-brief/SKILL.md) | "concept brief" · "vision brief" · "direction brief" · "write up the vision" |
+| Spec or PRD | [`prd-writing`](prd-writing/SKILL.md) | "write a PRD" · "feature spec" · "product requirements" |
+| Success metrics and KPIs | [`metrics-definition`](metrics-definition/SKILL.md) | "define success metrics" · "what should we measure" · "KPIs for this" · "north star metric" |
+| Competitive landscape | [`competitor-analysis`](competitor-analysis/SKILL.md) | "competitor analysis" · "competitive landscape" |
+| Feature prioritisation | [`feature-prioritisation`](feature-prioritisation/SKILL.md) | "prioritise this backlog" · "what should we build first" · "RICE scoring" · "MoSCoW" |
+| Should we use AI for this? | [`ai-decision-framework`](ai-decision-framework/SKILL.md) | "should we use AI for" · "evaluate this AI idea" · "AI or not" |
+| Scope a known AI feature | [`ai-feature-scoping`](ai-feature-scoping/SKILL.md) | "scope this AI feature" · "AI feature feasibility" |
 
-### Brand & Design
+### Ideate
+*Generate, challenge, and stress-test ideas before committing.*
 
-| Skill | What it does | Trigger phrases |
+| Task | Skill | Trigger phrases |
 |---|---|---|
-| [`art-direction`](art-direction/SKILL.md) | Define visual identity, brief designers/agencies, art direct campaigns, critique visual work | "art direction" · "visual identity" · "brand design" · "moodboard" · "creative brief" |
+| Generate and stress-test ideas | [`brainstorming-ideation`](brainstorming-ideation/SKILL.md) | "brainstorm ideas" · "help me ideate" · "generate solutions" |
+| Interrogate a plan or decision | [`grill-me`](grill-me/SKILL.md) | "grill me" · "stress test this" · "poke holes in my plan" · "challenge this design" · "interview me on this" |
+| User stories with edge cases | [`user-story-creation`](user-story-creation/SKILL.md) | "write user stories" · "acceptance criteria" · "break into tickets" |
 
-### Ideation & Before Building
+### Design
+*Prototype, validate visually, and establish the design contract before code.*
 
-| Skill | What it does | Trigger phrases |
+| Task | Skill | Trigger phrases |
 |---|---|---|
-| [`grill-me`](grill-me/SKILL.md) | Claude interrogates the user — walks the decision tree, challenges weak points, resolves each branch before moving on. Pre-flight stress test before writing a spec or brief. | "grill me" · "stress test this" · "poke holes in my plan" · "challenge this design" · "interview me on this" |
-| [`brainstorming-ideation`](brainstorming-ideation/SKILL.md) | Diverge-then-converge with problem reframing and challenge round | "brainstorm ideas" · "help me ideate" · "generate solutions" |
-| [`ai-decision-framework`](ai-decision-framework/SKILL.md) | 6-step: problem → AI suitability score → approach → feasibility → metrics → ethics → decision brief | "should we use AI for" · "evaluate this AI idea" · "AI or not" |
-| [`ai-feature-scoping`](ai-feature-scoping/SKILL.md) | Scope a known AI feature: accuracy thresholds, failure modes, build/buy, measurement | "scope this AI feature" · "AI feature feasibility" |
+| Figma Make prompt | [`figma-make-prompt-generator`](figma-make-prompt-generator/SKILL.md) | "generate a Figma Make prompt" · "turn this brief into a Figma prompt" · "Figma Make prompt" |
+| Visual identity + art direction | [`art-direction`](art-direction/SKILL.md) | "art direction" · "visual identity" · "brand design" · "moodboard" · "creative brief" |
+| Analyse visual references | [`design-analysis`](design-analysis/SKILL.md) | "analyse these references" · "derive a design system" · "design analysis" · "what's the design direction here" |
+| UI/UX review and build | [`ui-ux-pro-max`](ui-ux-pro-max/SKILL.md) | "review my UI" · "build this UI" · "design this page" · "improve the UX" |
 
-### Planning & Delivery
+### Build
+*Plan and implement — feature by feature.*
 
-| Skill | What it does | Trigger phrases |
+| Task | Skill | Trigger phrases |
 |---|---|---|
-| [`user-story-creation`](user-story-creation/SKILL.md) | Edge cases first, then Given/When/Then ACs. QA-ready stories with complexity estimates. | "write user stories" · "acceptance criteria" · "break into tickets" |
-| [`stakeholder-communication`](stakeholder-communication/SKILL.md) | BLUF format, audience-adapted, explicitly doesn't bury bad news | "stakeholder update" · "exec comms" · "status update" |
-| [`workflow-documentation`](workflow-documentation/SKILL.md) | Documents real-world messiness, not idealised flows. Surfaces implicit knowledge + exception handling. | "document this process" · "write a workflow" · "runbook" |
+| Scaffold a new project | [`project-setup`](project-setup/SKILL.md) | "set up a new project" · "project setup" · "/project-setup" · "scaffold this project" |
+
+### Ship
+*Deliver, communicate, and grow.*
+
+| Task | Skill | Trigger phrases |
+|---|---|---|
+| Launch planning | [`launch-planning`](launch-planning/SKILL.md) | "plan this launch" · "launch plan" · "go-to-market" · "GTM plan" · "rollout plan" |
+| Stakeholder update | [`stakeholder-communication`](stakeholder-communication/SKILL.md) | "stakeholder update" · "exec comms" · "status update" |
+| Project handoff | [`project-handoff`](project-handoff/SKILL.md) | "update handoff" · "project state" · "handoff update" · "pause this project" |
+
+### Operate
+*Run, maintain, and improve what's been shipped.*
+
+| Task | Skill | Trigger phrases |
+|---|---|---|
+| Document a real-world process | [`workflow-documentation`](workflow-documentation/SKILL.md) | "document this process" · "write a workflow" · "runbook" |
 
 ---
 
@@ -105,3 +133,9 @@ Skills work best in Claude Code (`claude` CLI). They also work in Claude.ai Proj
 
 **Exploration (no data)**
 `ost-exploration` → `brainstorming-ideation` → `ai-feature-scoping`
+
+**Design → Prototype**
+`art-direction` → `figma-make-prompt-generator`
+
+**New project start**
+`project-setup` → `concept-brief` → `prd-writing`
