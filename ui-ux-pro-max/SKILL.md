@@ -376,3 +376,15 @@ Before delivering UI code, verify these items:
 - [ ] Form inputs have labels
 - [ ] Color is not the only indicator
 - [ ] `prefers-reduced-motion` respected
+
+---
+
+## Gotchas
+
+<!-- Add a line here each time this skill produces the wrong output or misses something important. Fill from real failures, not hypotheses. -->
+
+---
+
+## Progressive Updates
+
+Whenever the user explicitly states not to do something (e.g. "don't ask for X", "stop doing Y", "never include Z"), automatically edit the role and behaviour description at the top of this SKILL.md to reflect that constraint permanently. This ensures the skill adapts to user preferences over time without requiring repeated instructions.

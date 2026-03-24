@@ -1,7 +1,7 @@
 ---
 version: 1.0.0
 name: ai-market-research
-description: Use this skill for research planning, competitive discovery, user sentiment analysis, and trend detection. Diagnoses which research phase the user is in, selects the right tool, and produces a sequenced Research Brief. For synthesis of raw data (transcripts, scraped output, PDFs), route to user-research-synthesis instead. Trigger phrases include: "research X market", "find out what users think about", "what do people say about", "monitor X over time", "market research plan", "research this space".
+description: Research planning, competitive discovery, user sentiment, trend detection. Triggers: "research X market", "what do people think about", "what's the sentiment on", "monitor X over time", "market research plan", "research this space", "find out what users say", "competitive discovery". For synthesising raw data already collected, use user-research-synthesis.
 ---
 
 This skill diagnoses where you are in a research workflow and produces a concrete **Research Brief** — phase, tool stack, and sequenced action plan. If the user brings raw data (transcripts, scraped output, PDFs), route to `user-research-synthesis` instead — that skill is purpose-built for synthesis and produces richer, quote-grounded output.
@@ -226,6 +226,13 @@ Claude Code pipeline (weekly Reddit/HN scrape) → structured CSV → Claude Pro
 
 **Fast one-off competitive snapshot**
 Perplexity → paste competitor pages into Claude chat → JTBD and gap analysis output
+
+---
+
+
+## Gotchas
+
+<!-- Add a line here each time this skill produces the wrong output or misses something important. Fill from real failures, not hypotheses. -->
 
 ---
 

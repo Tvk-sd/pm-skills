@@ -1,7 +1,7 @@
 ---
 version: 1.0.0
 name: brainstorming-ideation
-description: Run a structured diverge-then-converge ideation session that generates genuinely novel solutions, not obvious lists. Use when the user needs to brainstorm product ideas, explore a problem space, or generate creative solutions. Trigger phrases include: "brainstorm ideas", "help me ideate", "what solutions could we try", "generate ideas for", "creative problem solving".
+description: Diverge-then-converge ideation — genuine novelty, not obvious lists. Triggers: "brainstorm ideas", "help me ideate", "what could we try", "generate ideas for", "I need ideas", "creative solutions", "explore the problem space", "what are our options", "let's brainstorm".
 ---
 
 **Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
@@ -78,6 +78,12 @@ Filename: [project-slug]-IDEATION.md
 ```
 
 If no project slug is evident from context, ask the user for one before saving. Confirm the save with: `Saved: [filename]`
+
+---
+
+## Gotchas
+
+- **The obvious idea will be in the list — make it visible.** The solution everyone is already thinking about needs to appear and be explicitly labelled as "the default path." This lets it be consciously chosen or rejected, instead of sneaking in through the back door.
 
 ---
 

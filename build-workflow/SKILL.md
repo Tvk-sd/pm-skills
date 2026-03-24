@@ -1,7 +1,7 @@
 ---
 version: 1.0.0
 name: build-workflow
-description: Human-in-the-loop build workflow for PMs using Claude Code. Maps every phase (Discover → Specify → Design → Build → Review → Ship) to the right skills, MCPs, and agent patterns. Includes parallel agent setup for building multiple features simultaneously. Trigger phrases: "how do I build this", "start a build", "what skill should I use", "parallel build", "run agents in parallel".
+description: PM build workflow — maps Discover → Specify → Design → Build → Review → Ship to the right skills and MCPs. Triggers: "what skill should I use for", "run agents in parallel", "parallel build", "which skill should I use", "what's the build process", "map this to a skill", "how do I use Claude Code for this".
 ---
 
 # Human-in-the-Loop Build Workflow
@@ -276,6 +276,13 @@ The two highest-value checkpoints:
 2. **Design approval in Paper** — prevents expensive code rework
 
 Never let Claude move from design to build, or from plan to code, without explicit confirmation from you.
+
+---
+
+
+## Gotchas
+
+<!-- Add a line here each time this skill produces the wrong output or misses something important. Fill from real failures, not hypotheses. -->
 
 ---
 

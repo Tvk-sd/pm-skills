@@ -1,7 +1,7 @@
 ---
 version: 1.0.0
 name: project-handoff
-description: Create or update HANDOFF.md — a living technical state document for any project. Captures what's built, stack, deployment, pending tasks, and update rules. Created at concept stage, updated at every milestone. Use when starting a project, reaching a milestone, onboarding a collaborator, or pausing work. Trigger phrases include: "update handoff", "milestone reached", "project state", "handoff update", "onboard collaborator", "pause project", "update project status".
+description: Creates or updates HANDOFF.md — living technical state for the current project. Triggers: "update handoff", "project state", "handoff update", "milestone reached", "onboard a collaborator", "pause this project", "update project status", "what's the state of this project", "document what's been built".
 ---
 
 Detect whether `HANDOFF.md` exists in the working directory:
@@ -99,6 +99,13 @@ Save as `HANDOFF.md` in the current working directory.
 Confirm save with: `Updated: HANDOFF.md`
 
 Display the full file inline after saving.
+
+---
+
+
+## Gotchas
+
+<!-- Add a line here each time this skill produces the wrong output or misses something important. Fill from real failures, not hypotheses. -->
 
 ---
 

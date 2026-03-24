@@ -1,7 +1,7 @@
 ---
 version: 1.0.0
 name: launch-planning
-description: Plan and coordinate product and feature launches end-to-end. Use when the user needs a go-to-market plan, launch checklist, launch comms strategy, staged rollout plan, or post-launch review structure. Trigger phrases include: "plan this launch", "launch plan", "go-to-market", "GTM plan", "how do we launch this", "rollout plan", "launch checklist", "launch comms", "launch readiness", "pre-launch", "launch strategy".
+description: End-to-end launch planning: GTM, readiness checklist, comms, staged rollout, post-launch review. Triggers: "plan this launch", "launch plan", "go-to-market", "GTM plan", "how do we launch this", "rollout plan", "launch checklist", "launch comms", "launch readiness", "pre-launch plan", "launch strategy", "we're launching soon".
 ---
 
 **Before starting:** present a brief work plan — what you will do and in what order — plus any clarifying questions, and wait for confirmation before proceeding.
@@ -164,6 +164,12 @@ Filename: [project-slug]-LAUNCH.md
 ```
 
 If no project slug is evident from context, ask the user for one before saving. Confirm the save with: `Saved: [filename]`
+
+---
+
+## Gotchas
+
+- **Go/no-go criteria that no one will actually enforce.** Vague criteria like "system is stable" or "team is ready" will always be deemed met under launch pressure. Push for specific, measurable thresholds — error rate below X%, support ticket volume under Y — that would actually cause a delay if missed.
 
 ---
 
