@@ -1,5 +1,5 @@
 ---
-version: 2.1.3
+version: 2.1.5
 name: conductor
 description: End-to-end PM build session: Scope Zero → Specify → Design → Three Amigos → Build → Ship. Gates require explicit approval. Maintains state via CLAUDE.md. Triggers: "conductor", "start conductor", "/conductor", "scope zero", "run a full build session", "I want to go from idea to shipped". NOT for quick tasks — use for full feature builds that need human checkpoints.
 ---
@@ -210,7 +210,7 @@ Suggested fix: [proposal]
 **Routing:** If Stage 1 is Large or contains significant architectural decisions, recommend before Design:
 ```
 This is a complex build. Before we design, I'd recommend running:
-compound-engineering:workflows:plan
+compound-engineering:ce-plan
 This will give us a solid technical plan to design against.
 Want to do that now?
 ```
@@ -246,7 +246,7 @@ Write CONDUCTOR STATE to CLAUDE.md — including the full acceptance criteria li
 **Goal:** An approved prototype or mockup before any production code is written. Loop until approved.
 
 **Plan mode guard:**
-**CRITICAL:** Do NOT trigger `compound-engineering:workflows:plan` during Phase 3. Design is not a planning step. If plan mode is still active from a previous phase, exit it before proceeding. Design decisions and art direction happen outside plan mode. State: "Exiting plan mode — design decisions happen outside it." Do not re-enter plan mode until Phase 5 (Build). Triggering `workflows:plan` here will collapse Design + Three Amigos + Build into a single automated pass — exactly what the gates are there to prevent.
+**CRITICAL:** Do NOT trigger `compound-engineering:ce-plan` during Phase 3. Design is not a planning step. If plan mode is still active from a previous phase, exit it before proceeding. Design decisions and art direction happen outside plan mode. State: "Exiting plan mode — design decisions happen outside it." Do not re-enter plan mode until Phase 5 (Build). Triggering `workflows:plan` here will collapse Design + Three Amigos + Build into a single automated pass — exactly what the gates are there to prevent.
 
 **Art direction check:**
 1. Look for `[project-slug]-ARTDIRECTION.md` in the working directory.
@@ -806,12 +806,15 @@ The result comes back here — your main session stays clean.
 
 | Task | Agent to spawn |
 |---|---|
+| Scope Zero (PM framing, job/signal/outcome, gate artifact) | `pm-os:conductor-scope-zero` |
 | Design critique | `design:design-critique` |
-| Code review | `compound-engineering:workflows:review` |
+| Code review | `compound-engineering:ce-review` |
 | Accessibility audit | `design:accessibility-review` |
 | Research / docs | `compound-engineering:research:best-practices-researcher` |
-| Build plan | `compound-engineering:workflows:plan` |
-| Feature build | `compound-engineering:workflows:work` |
+| Build plan | `compound-engineering:ce-plan` |
+| Feature build | `compound-engineering:ce-work` |
+
+Requires the **pm-os** plugin (e.g. repo with `agents/conductor-scope-zero.md`) to be enabled so `pm-os:conductor-scope-zero` resolves.
 
 **Pattern:**
 1. Spawn the subagent with the task and relevant context (files, URLs, current state)

@@ -1,6 +1,38 @@
 # Conductor v2 — Changelog
 
-## v2.1.0 — 2026-03-19
+## v2.1.5 — 2026-04-09
+
+### Updated
+
+**compound-engineering plugin → v2.63.1 (was v2.35.2)**
+The plugin reorganised its command structure: `commands/workflows/` is replaced by `skills/ce-*/`. Skill names have changed accordingly:
+
+| Old | New |
+|---|---|
+| `compound-engineering:workflows:plan` | `compound-engineering:ce-plan` |
+| `compound-engineering:workflows:work` | `compound-engineering:ce-work` |
+| `compound-engineering:workflows:review` | `compound-engineering:ce-review` |
+
+All references in SKILL.md and `~/.claude/commands/conductor.md` updated.
+
+New skills added in v2.42–v2.63:
+- `compound-engineering:ce-brainstorm` — replaces `compound-engineering:brainstorming`
+- `compound-engineering:ce-compound` — multi-step compound workflows
+- `compound-engineering:ce-slack-research` — Slack organizational context research
+- `compound-engineering:ce-sessions` — session history management
+
+---
+
+## v2.1.4 — 2026-03-22
+
+### Fixed
+
+**Pause protocol enforcement**
+CONDUCTOR STATE was written to CLAUDE.md but context/PROJECT-TRACKER.md was skipped on pause. Step 3 of pause protocol now explicitly names PROJECT-TRACKER as the human-readable status summary (current phase + what was completed + what's next + open blockers) and CLAUDE.md as the machine-readable resume state only.
+
+---
+
+## v2.1.3 — 2026-03-22
 
 First real end-to-end session exposed multiple self-advance violations. All fixes are backwards-compatible — existing sessions resume cleanly with `/conductor from:[phase]`.
 
