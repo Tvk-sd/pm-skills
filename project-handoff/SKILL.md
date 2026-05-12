@@ -1,10 +1,10 @@
 ---
-version: 1.0.0
+version: 2.1.0
 name: project-handoff
-description: Creates or updates HANDOFF.md — living technical state for the current project. Triggers: "update handoff", "project state", "handoff update", "milestone reached", "onboard a collaborator", "pause this project", "update project status", "what's the state of this project", "document what's been built".
+description: Creates or updates /context/PROJECT-TRACKER.md — living project state, session log, and Signal. Moves completed items to CHANGELOG. Triggers: "update tracker", "update handoff", "project state", "handoff update", "milestone reached", "onboard a collaborator", "pause this project", "update project status", "what's the state of this project", "document what's been built", "wrap up this session", "end of session".
 ---
 
-Detect whether `HANDOFF.md` exists in the working directory:
+Detect whether `/context/PROJECT-TRACKER.md` exists in the working directory:
 - **Not found → Create mode:** build a skeleton from available context
 - **Found → Update mode:** read the file, update only what changed, preserve everything else
 
@@ -12,100 +12,150 @@ Never overwrite sections that haven't changed. Never truncate existing content.
 
 ---
 
-## HANDOFF.md template
+## PROJECT-TRACKER.md template
 
 ```markdown
-# [Project name] — Handoff
-Last updated: [date] · Status: [Planning | In Progress | Shipped]
+# [Project name] — Tracker
+**Status:** Planning | In Progress | Shipped | Paused
+**Last updated:** YYYY-MM-DD
 
 ---
 
-## Artifacts
-| File | Status |
-|---|---|
-| `[slug]-CONCEPT.md` | ✅ / ❌ |
-| `[slug]-PRD.md` | ✅ / ❌ |
-| `HANDOFF.md` | ✅ |
+## How Claude should update this tracker
+
+<!-- These rules apply during regular project sessions, not during the project-handoff skill execution itself. -->
+
+Rules that apply in every session — follow automatically, no instruction needed:
+
+1. **On task complete** → mark `[x]`, move item to `### Done` within the same stage block
+2. **Ad-hoc tasks** → any work done mid-session that was not pre-tracked must be added to `### Done` immediately when shipped — do not leave untracked work out of the record
+3. **Now is empty** → pull the top item from Next into Now
+4. **Stage complete** → collapse the stage block to a one-line summary under `## Completed Stages`
+5. **Done section > 8 items** → oldest items move to `CHANGELOG.md` (append entry, dated, 1–3 sentences)
+6. **Update `Last updated`** at the end of every session that touches the tracker
 
 ---
 
-## What's built
-_Nothing yet — updated after first build._
+## [Stage name] — Active
+
+### Now
+- [ ] [active focus]
+
+### Next
+*(empty — pull from Later when Now is clear)*
+
+### Later
+- [ ] [future work]
+
+### Done
+- [x] [completed item] — YYYY-MM-DD
 
 ---
 
-## Stack
-_Not yet defined._
+## Completed Stages
+*(archive collapsed stage summaries here)*
 
 ---
 
-## Deployment
-_Not yet deployed._
+## Resume
+
+**Prompt:** "Resume [Project Name]. Read CLAUDE.md and PROJECT-TRACKER.md."
+
+[Key context: production URL, deploy command, Figma reference, environment notes, etc.]
 
 ---
 
-## Pending tasks
-| Priority | Task | Notes |
-|---|---|---|
-| 🔴 | … | … |
+## Session Log
 
----
+<!-- Most recent entry at top. AI writes Situation, Action, Result and suggests Signal. Human owns the Signal. -->
 
-## Update rules
-| Change type | Update this file |
-|---|---|
-| Strategy / vision / positioning | `[slug]-CONCEPT.md` |
-| Feature scope / spec / metrics | `[slug]-PRD.md` |
-| Feature shipped / task done / milestone | `HANDOFF.md` |
+### YYYY-MM-DD
+**Situation:** [One sentence — state when this session started]
+**Action:** [2–3 sentences — what happened, what was built or decided]
+**Result:** [One sentence — what changed or was accomplished]
+**Signal:** [One sentence — the single thing to carry into the next session. Human's call.]
 ```
 
 ---
 
 ## Create mode
 
-When no HANDOFF.md exists, build the skeleton using whatever context is available:
+When no PROJECT-TRACKER.md exists, build the skeleton using whatever context is available:
 
-- **Project name** — from CONCEPT.md, PRD.md, or ask
+- **Project name** — from PROJECT-BRIEF.md, PRD.md, CLAUDE.md, or ask
 - **Status** — `Planning` if no code exists, `In Progress` if build has started
-- **Artifacts** — scan working directory for known files and mark ✅ or ❌
-- **What's built** — leave as placeholder if nothing is built yet
-- **Stack** — leave as placeholder if not yet defined
-- **Deployment** — leave as placeholder if not yet deployed
-- **Pending tasks** — derive from PRD open questions, concept brief, or ask the user for the top 3
+- **How to resume** — derive from current project state; ask if unclear
+- **Now / Next / Later** — derive from PRD open questions, brief, or ask for top priorities
+- **Active tasks** — leave as placeholder if nothing is started yet
+
+If `/context/` folder doesn't exist, create it first.
 
 ---
 
 ## Update mode
 
-When HANDOFF.md already exists:
+When PROJECT-TRACKER.md already exists:
 
 1. Read the current file
 2. Identify what has changed since last update (ask if unclear)
 3. Update only the affected sections:
-   - New artifact created → mark ✅ in Artifacts table
-   - Build completed → fill in What's built and Stack
-   - Deployed → fill in Deployment, set Status to Shipped
-   - Task completed → mark done or remove from Pending tasks
-   - New task identified → add to Pending tasks
-4. Update the `Last updated` date
-5. Leave everything else untouched
+   - Status change → update the status field
+   - Task completed → mark `[x]`, move to `### Done` within the same stage block
+   - New work scoped → add to `### Now`, `### Next`, or `### Later` as appropriate
+   - Now is empty → pull top item from Next
+   - Stage complete → collapse to one-line summary under `## Completed Stages`
+4. Update `Last updated` date
+5. Update `Resume` section to reflect current state
+6. Leave everything else untouched
+7. If `### Done` has > 8 items → move oldest to CHANGELOG.md (dated, 1–3 sentence prose entry)
+
+### Session wrap (end of session)
+
+When triggered at end of session ("wrap up", "end of session", "pause this project"):
+
+1. Draft three fields from the conversation:
+   - **Situation:** one sentence — state when session started
+   - **Action:** 2–3 sentences — what happened, what was built or decided
+   - **Result:** one sentence — what changed or was accomplished
+2. Draft a suggested Signal — one sentence written as a note to future-you: what would you wish you'd remembered? Could be a task, a warning, a method, a hunch — whatever has the most carry.
+3. Present to the human:
+   - The Situation / Action / Result draft
+   - "Here's a suggested Signal: [draft]. Think of it as a note to future you — edit it or replace it, one sentence, your call."
+4. After the human responds, prepend the complete entry to the Session Log in PROJECT-TRACKER.md using today's date
+
+---
+
+## CHANGELOG sync
+
+When tasks move to Completed, check if Completed (recent) has more than 10 items:
+
+- If yes: take the oldest completed items and append a log entry to `/context/CHANGELOG.md`
+- Format: `## YYYY-MM-DD\n[What was done and why it was done]`
+- Keep it to 1–3 sentences. Plain prose, not a list.
+
+If `/context/CHANGELOG.md` doesn't exist, create it with a header: `# Changelog`
 
 ---
 
 ## File output
 
-Save as `HANDOFF.md` in the current working directory.
+Save as `context/PROJECT-TRACKER.md` in the current working directory.
 
-Confirm save with: `Updated: HANDOFF.md`
+Confirm save with a brief changes summary — what sections were updated and how. Do NOT display the full file. Example format:
 
-Display the full file inline after saving.
+```
+Updated: context/PROJECT-TRACKER.md
+- Status: In Progress → Shipped
+- Moved 2 tasks to Done
+- 3 items archived to CHANGELOG.md
+- Resume section updated
+```
 
 ---
 
-
 ## Gotchas
 
-<!-- Add a line here each time this skill produces the wrong output or misses something important. Fill from real failures, not hypotheses. -->
+- **Looping on save:** "Display the full file inline after saving" caused Claude to re-read the embedded automation rules and act on them recursively. Fix: replaced full-file display with a changes summary (what sections changed and how). The automation rules block also carries a comment clarifying it applies during sessions, not during skill execution.
 
 ---
 
